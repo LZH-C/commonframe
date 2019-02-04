@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -53,11 +54,12 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public ResponseDTO upDateArticle(UpdateArticleMsgDTO articleDTO) {
+        articleDTO.setArticleTime(new Date());
         int i= blogMapper.updateByPrimaryKeySelective(articleDTO);
         if(i==1){
             return ResponseDTO.succData("修改文章成功");
         }else{
-            return  ResponseDTO.succData("修改文章失败");
+            return  ResponseDTO.errorData("修改文章失败");
         }
     }
 
@@ -112,8 +114,13 @@ public class BlogServiceImpl implements BlogService {
         CommonArticle article1AddClick=new CommonArticle();
         article1AddClick.setArticleId(article.getArticleId());
         article1AddClick.setArticleClick(article.getArticleClick());
-        articleMapper.updateByPrimaryKeySelective(article1AddClick);
-        return new ResponseDTO("成功返回",article);
+        int i=articleMapper.updateByPrimaryKeySelective(article1AddClick);
+        if(i!=0){
+            return new ResponseDTO("成功返回",article);
+        }else {
+            return ResponseDTO.errorData("成功返回");
+        }
+
     }
 
     /*文章状态 0正常 1草稿 2冻结 3回收站*/
@@ -131,12 +138,13 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public ResponseDTO delArticle(int key) {
-        int i=articleMapper.deleteByPrimaryKey(key);
+    public ResponseDTO delArticle(CommonArticle article) {
+        article.setUserId((int)SecurityUtils.getSubject().getSession().getAttribute("userId"));
+        int i=blogMapper.deleteArticle(article);
         if(i==1){
             return ResponseDTO.succData("删除文章成功");
         }else{
-            return  ResponseDTO.succData("删除文章失败");
+            return ResponseDTO.errorData("删除文章失败");
         }
     }
 

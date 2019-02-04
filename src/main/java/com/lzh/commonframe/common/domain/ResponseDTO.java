@@ -55,6 +55,14 @@ public class ResponseDTO<T> {
     public static <T> ResponseDTO<T> succData(T data) {
         return new ResponseDTO(ResponseCodeConst.SUCCESS, data);
     }
+    public static <T> ResponseDTO<T> errorData(String msg) {
+        ResponseDTO dto =  new ResponseDTO();
+        dto.code=400;
+        dto.msg=msg;
+        dto.success=true;
+        dto.data=null;
+        return dto;
+    }
 
     public static <T> ResponseDTO succMsg(String msg) {
         return new ResponseDTO(ResponseCodeConst.SUCCESS, msg);

@@ -19,15 +19,19 @@ public class BlogSqlProvider {
             SET("sort_article_id = #{sortArticleId,jdbcType=INTEGER}");
         }
 
-        if (record.getSortBolgId() != null) {
-            SET("sort_bolg_id = #{sortBolgId,jdbcType=INTEGER}");
+        if (record.getSortBlogId() != null) {
+            SET("sort_bolg_id = #{sortBlogId,jdbcType=INTEGER}");
         }
 
         if (record.getArticleContent() != null) {
             SET("article_content = #{articleContent,jdbcType=LONGVARCHAR}");
         }
 
-        WHERE("article_id = #{articleId,jdbcType=SMALLINT}");
+        if (record.getArticleTime() != null) {
+            SET("article_time = #{articleTime,jdbcType=TIMESTAMP}");
+        }
+
+        WHERE("article_id = #{articleId,jdbcType=INTEGER}");
 
         return SQL();
     }

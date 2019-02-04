@@ -14,6 +14,12 @@ import java.util.List;
 
 @Mapper
 public interface BlogMapper {
+    /*删除文章，根据articleId和userId*/
+    @Delete({
+            "delete from article",
+            "where article_id = #{articleId,jdbcType=INTEGER} and user_id= #{userId,jdbcType=INTEGER}"
+    })
+    int deleteArticle(CommonArticle article);
 
     /*添加文章*/
     @Insert({
@@ -36,17 +42,19 @@ public interface BlogMapper {
     @Select("select count(*) from article")
     int getArticleNum();
 
-    /*查看文章内容*/
+    /*查看文章内容,根据文章状态和文章id*/
     @Select({
-            "select * from article where article_id = #{id,jdbcType=INTEGER} and article_status = #{status,jdbcType=TINYINT}"
+            "select atc.*,u.user_name from article atc,user u where atc.user_id=u.user_id and article_id = #{id,jdbcType=INTEGER} and article_status = #{status,jdbcType=TINYINT}"
     })
     @Results({
             @Result(column="article_id", property="articleId", jdbcType=JdbcType.INTEGER, id=true),
             @Result(column="article_name", property="articleName", jdbcType=JdbcType.VARCHAR),
             @Result(column="article_time", property="articleTime", jdbcType=JdbcType.INTEGER),
             @Result(column="article_click", property="articleClick", jdbcType=JdbcType.INTEGER),
+            @Result(column="sort_article_id", property="sortArticleId", jdbcType=JdbcType.INTEGER),
+            @Result(column="sort_bolg_id", property="sortBlogId", jdbcType=JdbcType.INTEGER),
             @Result(column="sort_article_name", property="sortArticleName", jdbcType=JdbcType.VARCHAR),
-            @Result(column="sort_blog_name", property="sortBolgName", jdbcType=JdbcType.VARCHAR),
+            @Result(column="sort_blog_name", property="sortBlogName", jdbcType=JdbcType.VARCHAR),
             @Result(column="user_name", property="userName", jdbcType=JdbcType.VARCHAR),
             @Result(column="article_content", property="articleContent", jdbcType=JdbcType.LONGVARCHAR)
     })
@@ -86,7 +94,7 @@ public interface BlogMapper {
             @Result(column="article_time", property="articleTime", jdbcType=JdbcType.INTEGER),
             @Result(column="article_click", property="articleClick", jdbcType=JdbcType.INTEGER),
             @Result(column="sort_article_name", property="sortArticleName", jdbcType=JdbcType.VARCHAR),
-            @Result(column="sort_blog_name", property="sortBolgName", jdbcType=JdbcType.VARCHAR),
+            @Result(column="sort_blog_name", property="sortBlogName", jdbcType=JdbcType.VARCHAR),
             @Result(column="user_name", property="userName", jdbcType=JdbcType.VARCHAR),
             @Result(column="article_content", property="articleContent", jdbcType=JdbcType.LONGVARCHAR)
     })
@@ -107,7 +115,7 @@ public interface BlogMapper {
             @Result(column="article_time", property="articleTime", jdbcType=JdbcType.INTEGER),
             @Result(column="article_click", property="articleClick", jdbcType=JdbcType.INTEGER),
             @Result(column="sort_article_name", property="sortArticleName", jdbcType=JdbcType.VARCHAR),
-            @Result(column="sort_blog_name", property="sortBolgName", jdbcType=JdbcType.VARCHAR),
+            @Result(column="sort_blog_name", property="sortBlogName", jdbcType=JdbcType.VARCHAR),
             @Result(column="user_name", property="userName", jdbcType=JdbcType.VARCHAR),
             @Result(column="article_content", property="articleContent", jdbcType=JdbcType.LONGVARCHAR)
     })
@@ -127,7 +135,7 @@ public interface BlogMapper {
             @Result(column="article_time", property="articleTime", jdbcType=JdbcType.INTEGER),
             @Result(column="article_click", property="articleClick", jdbcType=JdbcType.INTEGER),
             @Result(column="sort_article_name", property="sortArticleName", jdbcType=JdbcType.VARCHAR),
-            @Result(column="sort_blog_name", property="sortBolgName", jdbcType=JdbcType.VARCHAR),
+            @Result(column="sort_blog_name", property="sortBlogName", jdbcType=JdbcType.VARCHAR),
             @Result(column="user_name", property="userName", jdbcType=JdbcType.VARCHAR),
             @Result(column="article_content", property="articleContent", jdbcType=JdbcType.LONGVARCHAR)
     })

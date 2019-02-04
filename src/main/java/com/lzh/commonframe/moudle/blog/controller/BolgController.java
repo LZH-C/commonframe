@@ -45,14 +45,14 @@ public class BolgController {
     /*查看文章内容*/
     @GetMapping("/article/details/{articleId}")
     @ResponseBody
-    public ResponseDTO getArticle( @PathVariable int articleId, HttpServletResponse response){
+    public ResponseDTO getArticle( @PathVariable int articleId){
         return blogService.getArticle(new SearchDTO(articleId,(byte)0));
     }
 
     /*更新文章内容*/
     @PostMapping("/article/update")
     @ResponseBody
-    public ResponseDTO updateArticleMsg(@RequestBody UpdateArticleMsgDTO upDateArticle){
+    public ResponseDTO updateArticleMsg(UpdateArticleMsgDTO upDateArticle){
          return blogService.upDateArticle(upDateArticle);
     }
 
@@ -64,10 +64,12 @@ public class BolgController {
     }
 
     /*删除文章*/
-    @PostMapping("/article/delArticle")
+    @GetMapping("/article/delArticle/{articleId}")
     @ResponseBody
-    public ResponseDTO delArticle(int articleId){
-        return  blogService.delArticle(articleId);
+    public ResponseDTO delArticle(@PathVariable int articleId){
+        CommonArticle commonArticle=new CommonArticle();
+        commonArticle.setArticleId(articleId);
+        return  blogService.delArticle(commonArticle);
     }
 
     /*获取ArticleSort列表*/

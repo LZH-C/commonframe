@@ -1,9 +1,11 @@
 package com.lzh.commonframe.moudle.blog.domain;
 
+import java.util.Date;
+
 public class UpdateArticleMsgDTO {
 
     //文章id
-    private Short articleId;
+    private Integer articleId;
 
     //文章名称
     private String articleName;
@@ -12,16 +14,19 @@ public class UpdateArticleMsgDTO {
     private Integer sortArticleId;
 
     //博客类型id
-    private Integer sortBolgId;
+    private Integer sortBlogId;
 
     //文章内容
     private String articleContent;
 
-    public Short getArticleId() {
+    //更新时间
+    private Date articleTime;
+
+    public Integer getArticleId() {
         return articleId;
     }
 
-    public void setArticleId(Short articleId) {
+    public void setArticleId(Integer articleId) {
         this.articleId = articleId;
     }
 
@@ -41,12 +46,12 @@ public class UpdateArticleMsgDTO {
         this.sortArticleId = sortArticleId;
     }
 
-    public Integer getSortBolgId() {
-        return sortBolgId;
+    public Integer getSortBlogId() {
+        return sortBlogId;
     }
 
-    public void setSortBolgId(Integer sortBolgId) {
-        this.sortBolgId = sortBolgId;
+    public void setSortBlogId(Integer sortBlogId) {
+        this.sortBlogId = sortBlogId;
     }
 
     public String getArticleContent() {
@@ -55,5 +60,13 @@ public class UpdateArticleMsgDTO {
 
     public void setArticleContent(String articleContent) {
         this.articleContent = articleContent;
+    }
+
+    public Date getArticleTime() {
+        return articleTime;
+    }
+
+    public void setArticleTime(Date articleTime) {
+        this.articleTime = articleTime;
     }
 }

@@ -1,5 +1,6 @@
+var articleId=window.location.href.substr(window.location.href.indexOf("details/")+8,window.location.href.length);
 $(function () {
-    initArticle(window.location.href.substr(window.location.href.indexOf("details/")+8,window.location.href.length));
+    initArticle(articleId);
     initComment();
     initLeftWall(getPathValue2(truePath+"/","/article/details/"));
 })
@@ -24,6 +25,9 @@ function initArticle(articleId) {
         url:"/article/details/"+articleId,
         dataType: "json",
         success: function(data){
+            if (sessionStorage.getItem('userName')==data.data.userName&&loginStatus){
+                $("#userFunc").css("display","block");
+            }
             $("#asideProfile div h3").html(data.data.articleName);
             $("#asideProfile span.time").html(format(data.data.articleTime));
             $("#asideProfile span.read-count").html("阅读数："+data.data.articleClick);
@@ -171,6 +175,27 @@ function addCommentToUser() {
             $("#comment_content").val('');
             $("#comment_content").css("height","auto");
             $("#comment_detail").removeClass("d-flex");
+        }
+    })
+}
+
+function changeArticle() {
+    window.location.href=truePath+"/writeblog?change=true&articleId="+articleId;
+}
+
+function delArticle() {
+    $.ajax({
+        type:"GET",
+        url:truePath+"/article/delArticle/"+articleId,
+        dataType: "json",
+        success: function(data){
+            if (data.code==400){
+                alert("删除失败！");
+            }
+            if (data.code==1){
+                alert("删除成功！");
+                window.location.href=truePath+"/blog/"+userName;
+            }
         }
     })
 }

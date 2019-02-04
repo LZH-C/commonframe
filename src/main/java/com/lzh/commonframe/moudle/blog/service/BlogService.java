@@ -30,7 +30,7 @@ public interface BlogService {
     ResponseDTO changeArticle(int articleId,byte status);
 
     /*删除文章*/
-    ResponseDTO delArticle(int articleId);
+    ResponseDTO delArticle(CommonArticle article);
 
     /*获取ArticleSort列表*/
     List<CommonArticleSort> getArticleSort();

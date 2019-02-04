@@ -11,9 +11,13 @@ public class ArticleListItemDTO {
 
     private Integer articleClick;
 
+    private Integer sortArticleId;
+
     private String sortArticleName;
 
-    private String sortBolgName;
+    private Integer sortBlogId;
+
+    private String sortBlogName;
 
     private String userName;
 
@@ -64,11 +68,11 @@ public class ArticleListItemDTO {
     }
 
     public String getSortBolgName() {
-        return sortBolgName;
+        return sortBlogName;
     }
 
     public void setSortBolgName(String sortBolgName) {
-        this.sortBolgName = sortBolgName;
+        this.sortBlogName = sortBolgName;
     }
 
     public String getUserName() {
@@ -101,5 +105,29 @@ public class ArticleListItemDTO {
 
     public void setArticleNum(int articleNum) {
         this.articleNum = articleNum;
+    }
+
+    public Integer getSortArticleId() {
+        return sortArticleId;
+    }
+
+    public void setSortArticleId(Integer sortArticleId) {
+        this.sortArticleId = sortArticleId;
+    }
+
+    public Integer getSortBlogId() {
+        return sortBlogId;
+    }
+
+    public void setSortBlogId(Integer sortBlogId) {
+        this.sortBlogId = sortBlogId;
+    }
+
+    public String getSortBlogName() {
+        return sortBlogName;
+    }
+
+    public void setSortBlogName(String sortBlogName) {
+        this.sortBlogName = sortBlogName;
     }
 }

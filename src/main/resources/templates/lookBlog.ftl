@@ -32,6 +32,10 @@
                         <p>
                             <span class="time">2019年01月17日 16:48:53</span>
                             <span class="read-count">阅读数：2434</span>
+                            <div id="userFunc" style="float: right;display: none">
+                                <button id="change" onclick="changeArticle()" class="btn btn-primary">修改</button>
+                                <button id="delete" onclick="delArticle()" c class="btn btn-danger">删除</button>
+                            </div>
                         </p>
                     </div>
                     <div class="data-info2 ">
@@ -48,7 +52,7 @@
                     <div class="comment-edit-box d-flex">
                         <a id="commentsedit"></a>
                         <div class="user-img">
-                            <a href="//me.csdn.net/qq_34187229" target="_blank">
+                            <a href="#" target="_blank">
                                 <img class="" src="/static/img/logo.jpg">
                             </a>
                         </div>

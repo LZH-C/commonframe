@@ -73,7 +73,7 @@ function showListArticle(data){
             "        <div class=\"interval\"></div>\n" +
             "        <dd class=\"tag\">\n" +
             "        <a href=\"/nav/iot\" target=\"_blank\">\n" +
-            "        "+item.sortBolgName+"</a>\n" +
+            "        "+item.sortBlogName+"</a>\n" +
             "        </dd>\n" +
             "        <div class=\"interval\"></div>\n" +
             "        <dd class=\"time\">\n" +

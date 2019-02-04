@@ -56,7 +56,7 @@
             <div class="col-xl-12 row text-center">
                 <div class="col-xl-4"></div>
                 <div class="col-xl-2">
-                    <input id="btnPublish" type="button" class="btn btn-outline-danger" value="发布博客" title="发布博客">
+                    <input id="btnPublish" type="button" class="btn btn-outline-danger" value="发布文章" title="发布博客">
                 </div>
                 <div class="col-xl-2">
                     <input id="btnDraft" type="button" class="btn btn-outline-danger ml-24 btn-baocun" value="保存为草稿" title="保存为草稿">

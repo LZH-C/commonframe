@@ -7,7 +7,7 @@
             </a>
         </div>
         <div class="user-info d-flex justify-content-center flex-column">
-            <a href="" target="_blank" class="" id="uid">undefine</a>
+            <a target="_blank" class="" id="uid">undefine</a>
         </div>
     </div>
     <div class="data-info d-flex ">

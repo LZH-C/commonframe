@@ -3,6 +3,7 @@ var loginStatus=false;
 /*真实路径*/
 var truePath="http://"+window.location.host;
 var trueHref=window.location.href;
+var userName=sessionStorage.getItem('userName');
 /*页面跳转*/
 function reLoading(path){
     window.location.href=truePath+path;
@@ -74,7 +75,7 @@ $(function () {
     $("#logOut a").click(function () {
         $.get(truePath+"/user/logout",function (data) {
             sessionStorage.removeItem('userName');
-            window.location.href='index';
+            window.location.href=truePath+'/index';
         })
     })
 })
@@ -105,6 +106,10 @@ function getPathValue1(str){
     var begin=window.location.pathname.indexOf(str)+str.length;
     var len=window.location.pathname.length-begin;
     return window.location.pathname.substr(begin, len);
+}function getPathValue3(str){
+    var begin=trueHref.indexOf(str)+str.length;
+    var len=trueHref.length-begin;
+    return trueHref.substr(begin, len);
 }
 function getPathValue2(str1,str2){
     var begin=trueHref.indexOf(str1)+str1.length;
@@ -132,7 +137,7 @@ function initLeftWall(userName) {
         url:truePath+"/user/getUserRelation/"+userName,
         dataType: "json",
         success: function(data){
-            $("#uid").html(userName);
+            $("#uid").html(userName).attr("href",truePath+"/blog/"+userName);
             $("#original").html(data.data.original).parents("dl").attr("title",data.data.original);
             $("#attention").html(data.data.attention).parents("dl").attr("title",data.data.attention);
             $("#click").html(data.data.click).parents("dl").attr("title",data.data.click);
