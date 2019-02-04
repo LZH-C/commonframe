@@ -1,0 +1,31 @@
+
+
+.navbar {
+    padding: 0rem 0rem;
+}
+div .row{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#logo{
+    width:95px;
+    height: auto;
+}
+
+#article{
+    margin:0px auto;
+}
+
+#search{
+    width: 300px;
+    margin-right: 10px;
+}
+
+img.circle{
+    border-radius: 50%;
+}
+
+li{
+    list-style: none;
+}
+

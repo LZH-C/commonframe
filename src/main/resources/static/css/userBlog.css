@@ -1,0 +1,62 @@
+aside {
+    width: 300px;
+    float: left;
+}
+
+aside div.aside-box {
+    margin-bottom: 8px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05);
+}
+
+aside #asideProfile .profile-intro {
+    padding: 16px 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e3e3e3;
+}
+aside #asideProfile .profile-intro2 {
+    padding: 0px 16px;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+aside #asideProfile .profile-intro .avatar-box {
+    position: relative;
+    width: 48px;
+    height: 48px;
+}
+aside #asideProfile .profile-intro .user-info {
+    margin-left: 8px;
+    width: 138px;
+}
+
+aside #asideProfile .data-info {
+    padding: 16px 10px;
+    border-bottom: 1px solid #e3e3e3;
+}
+aside #asideProfile .data-info2 {
+    min-height: 250px;
+    padding: 16px 10px;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+aside #asideProfile .data-info a {
+     color: inherit
+ }
+
+aside #asideProfile .data-info dl {
+    width:20%;
+    padding: 1% 1%;
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary {
+    display: block
+}
+
+dl.filter-sort-box{
+    margin-left: auto;
+}
+
+dl dt,dd{
+    margin: 5px;
+}
